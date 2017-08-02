@@ -1,0 +1,55 @@
+1.  What’s stdint.h?
+
+        stdint.h is a header file from the C standard library. It declares sets of integer types having specified widths, 
+        and the corresponding sets of macros;
+        
+2.  What’s the point of using uint8_t, uint32_t, int32_t, and uint16_t in a program?
+    
+        They are minimum width integer types. They ensure that unsigned integer types with lesser size have at least N bytes width.
+        
+3.  How many bytes is a BYTE, a DWORD, a LONG, and a WORD, respectively?
+
+        BYTE = 1; DWORD = 4; LONG = 4; WORD = 2;
+        
+4.  What (in ASCII, decimal, or hexadecimal) must the first two bytes of any BMP file be? 
+    Leading bytes used to identify file formats (with high probability) are generally called "magic numbers."
+    
+        in hexadecimal = 0x424d;
+        
+5.  What’s the difference between bfSize and biSize?
+
+        biSize is the size of the image and bfSize is the size of the whole bitmap file, including the headers. 
+
+6.  What does it mean if biHeight is negative?
+
+         If biHeight is negative, the bitmap is a top-down DIB (Device Independent Bitmap) with the origin at the upper left corner.
+        
+7.  What field in BITMAPINFOHEADER specifies the BMP’s color depth (i.e., bits per pixel)?
+
+        biBitCount;
+        
+8.  Why might fopen return NULL in lines 24 and 32 of copy.c?
+
+        If you don't have permission to open the file, or the file doesn't exist.
+
+9.  Why is the third argument to fread always 1 in our code?
+
+        This one is the arguments passed in as the blocks parameter. The blocks parameter tells the function the number of elements. 
+        to read. In copy.c we're just reading one element at a time. First we read BITMAPFILEHEADER, then BITMAPINFOHEADER and then RGBTRIPLE. 
+
+10. What value does line 65 of copy.c assign to padding if bi.biWidth is 3?
+
+        (4 - ( 3 * 3 ) % 4) % 4;
+        (4 - 9 % 4) % 4;
+        (4 - 1) % 4;
+        3 % 4;
+    ==> 3;
+        
+11. What does fseek do?
+
+        It changes the offset of the file pointer.
+
+12. What is SEEK_CUR?
+
+        Seek from current location/position in file. Can be used as third argument of fseek() function.
+ 
